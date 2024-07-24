@@ -1,5 +1,77 @@
-<html>
-    <body>
-        Meow Meow
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Module</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .student-form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .student-form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .student-form button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .student-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .student-list li {
+            padding: 10px;
+            background: #f4f4f4;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Module</h1>
+        <div class="student-form">
+            <input type="text" id="studentName" placeholder="Enter student name">
+            <button onclick="addStudent()">Add Student</button>
+        </div>
+        <ul id="studentList" class="student-list"></ul>
+    </div>
+
+    <script>
+        const students = [];
+
+        function addStudent() {
+            const studentNameInput = document.getElementById('studentName');
+            const studentName = studentNameInput.value.trim();
+            if (studentName) {
+                students.push(studentName);
+                displayStudents();
+                studentNameInput.value = '';
+            }
+        }
+
+        function displayStudents() {
+            const studentList = document.getElementById('studentList');
+            studentList.innerHTML = '';
+            students.forEach((student, index) => {
+                const li = document.createElement('li');
+                li.textContent = student;
+                studentList.appendChild(li);
+            });
+        }
+    </script>
+</body>
 </html>
